@@ -1,0 +1,17 @@
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+library("dplyr")
+
+library("plotly")
+
+stuff<-read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv")
+
+stuff$hover<-with(stuff,paste(state,"<br>","Beef",beef,"Dairy",dairy,"<br>","Fruits",total.fruits,"Veggies",total.veggies,"<br>","wheat",wheat,"Corn",corn))
+
+l<-list(color = toRGB("white"),width=2)
+
+g<-list(scop = "usa",projection=list(type="albers usa"),showlakes=TRUE,lakecolor=toRGB("white"))
+
+plot_geo(stuff,locationmode="USA-states")%>%add_trace(z=~total.exports,text=~hover,locations=~code,color=~total.exports,colors="Purples")%>%colorbar(title="Millions USD")%>%layout(tittle="2011 US Agriculture Exports by State<br>(Hover for breakdown)",geo=g)
+
+```
+
