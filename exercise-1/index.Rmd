@@ -11,7 +11,7 @@ l<-list(color = toRGB("white"),width=2)
 
 g<-list(scop = "usa",projection=list(type="albers usa"),showlakes=TRUE,lakecolor=toRGB("white"))
 
-plot_geo(stuff,locationmode="USA-states")%>%add_trace(z=~total.exports,text=~hover,locations=~code,color=~total.exports,colors="Purples")%>%colorbar(title="Millions USD")%>%layout(tittle="2011 US Agriculture Exports by State<br>(Hover for breakdown)",geo=g)
+plot_geo(stuff,locationmode="USA-states")%>%add_trace(z=~total.exports,text=~hover,locations=~code,color=~total.exports,colors="Purples")%>%colorbar(title="Millions USD")%>%layout(title="2011 US Agriculture Exports by State<br>(Hover for breakdown)",geo=g)
 
 ```
 
